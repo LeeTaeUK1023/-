@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이거 못 풀면 시험 희망 없다</title>
+</head>
+<body>
+    <script>
+        var quiz_title = ["물과 이산화탄소를 가지고 양분(포도당)을 만드는 것은?","광합성이란 O을 이용하여 O과 OOOOO를 가지고 양분(포도당)을 만드는 것이다.\nO에 들어갈 말은?\n(답 사이에 뛰어쓰십시오)","광합성을 하는 과정에서 발생하는 이것은?","OOO용액은 물질의 산성, 염기성에 따라 색깔이 변한다. O안에 들어갈 말을 쓰시오","광합성은 OOO에서 일어난다. O에 들어갈 말은?","OOOO-OOOO화 칼륨 용액은 녹말이라는 물질과 만나면 청람색으로 변한다. O에 공통으로 들어갈 말은?","광합성을 통해 만들어지는 포도당은 OO으로 저장된다. O에 들어갈 말은?","녹말은 OO을 통해 식물의 각 부분으로 이동한다. O에 들어갈 말은?","공기 중에 있는 이산화탄소는 식물의 OO을 통해 흡수한다 O에 들어갈 말은?","물은 OO를 통해 흡수되어 OO을 통해 이동한다 O에 들어갈 말은? (답 사이에 뛰어쓰십시오)","빛(빛에너지)는 OOO의 OOO가 흡수한다. O에 들어갈 말은? (답 사이에 뛰어쓰십시오)","식물도 OO을 하지만 OOO량에 비해 적어 산소 배출량이 더 많다. 여기서 O에 들어갈 말은? (답 사이에 뛰어쓰십시오)","태양계에서 태양에 가장 가까운 이 행성은?","이 행성의 특징은 대흑점이라는 주위에 비해 눈에 띄게 어두운 부분이 있다. 이 행성은?","이 행성은 자천축이 매우 기울어져있고, 외행성에 속한다 이 행성의 이름은?","이 행성은 대기가 이산화탄소로 덮혀있다 이 행성의 이름은?","이 행성은 내행성에 속하고 북극과 남극에 극관이 있다. 이행성의 이름은?","OO는 물질들을 이루는 기본 성분을 뜻하고\nOO는 물질을 이루는 기본 입자를 뜻하고\nOO는 물질의 성질을 나타내는 가장 작은 입자를 뜻한다. 여기서 O에 들어갈 말은? (답 사이에 뛰어쓰십시오)","-이온과 +이온의 수용액이 섞여서 생기는 것은?","주기율표 7번째 원소의 이름은?"]
+        var quiz_answer = ["광합성","빛 물 이산화탄소","산소","BTB","엽록체","아이오딘","녹말","체관","기공","뿌리 물관","엽록체 엽록소","호흡 광합성","수성","해왕성","천왕성","금성","화성","원소 원자 분자","앙금","질소"]
+        function quiz() {
+            var point = 0;
+            var quiz = 0;
+            var randoms = []
+                for (i=0; i<20; i++) {
+                    randomNum = Math.floor(Math.random() * 20)
+                if(randoms.indexOf(randomNum) === -1) {
+                    randoms.push(randomNum)
+                }else{
+                    i--
+                }
+            }
+            quiz_Start(randoms , quiz , point)
+        }
+    
+        function quiz_Start(randoms , quiz , point) {
+            if(quiz == 20) {
+                alert(`총합 점수: ${point}/100점\n총 ${(100-point)/5}개의 문제를 틀림`)
+            }
+            else if(prompt(`${quiz+1}번째 문제\n${quiz_title[randoms[quiz]]}`) == quiz_answer[randoms[quiz]]) {
+                point += 5
+                alert(`정답! +5점\n현재 점수: ${point}/100점`)
+                quiz++
+                quiz_Start(randoms , quiz , point)
+            }else{
+                alert(`오답! +0점\n정답: ${quiz_answer[randoms[quiz]]}\n현재 점수: ${point}/100점`)
+                quiz++
+                quiz_Start(randoms , quiz , point)
+            }
+        }
+    
+        quiz()
+    </script>
+</body>
+</html>
